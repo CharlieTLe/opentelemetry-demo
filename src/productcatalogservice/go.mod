@@ -3,7 +3,7 @@ module github.com/opentelemetry/opentelemetry-demo/src/productcatalogservice
 go 1.22.0
 
 require (
-	github.com/open-feature/go-sdk v1.12.0
+	github.com/open-feature/go-sdk v1.13.1
 	github.com/open-feature/go-sdk-contrib/hooks/open-telemetry v0.3.2
 	github.com/open-feature/go-sdk-contrib/providers/flagd v0.2.1
 	github.com/sirupsen/logrus v1.9.3
@@ -57,7 +57,7 @@ require (
 	golang.org/x/mod v0.17.0 // indirect
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
-	golang.org/x/text v0.15.0 // indirect
+	golang.org/x/text v0.19.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240528184218-531527333157 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240528184218-531527333157 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
