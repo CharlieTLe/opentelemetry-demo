@@ -18,7 +18,7 @@ jobs:
   dependabot-automerge:
     runs-on: ubuntu-latest
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'charlietle/opentelemetry-demo'
-    needs: [build_images, markdownlint, yamllint, misspell, markdownlinkcheck, sanity, checklicense, dependabot-metadata]
+    needs: [build_images, dependabot-metadata]
     steps:
       - name: Enable auto-merge for Dependabot PRs
         run: gh pr merge --auto --merge "$PR_URL"
