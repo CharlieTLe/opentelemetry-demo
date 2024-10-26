@@ -10,6 +10,7 @@ permissions:
   pull-requests: write
   contents: write
   packages: write
+  workflows: write
 jobs:
   build_images:
     uses: ./.github/workflows/component-build-images.yml
