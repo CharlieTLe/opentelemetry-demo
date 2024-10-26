@@ -11,15 +11,9 @@ updates:
   - package-ecosystem: "gomod"
     directories:
       - "/src/checkoutservice"
-    open-pull-requests-limit: 20
-    groups:
-      production-dependencies:
-        dependency-type: "production"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "gomod"
-    directories:
       - "/src/productcatalogservice"
-    open-pull-requests-limit: 20
+    groups:
+      go-production-dependencies:
+        dependency-type: "production"
     schedule:
       interval: "daily"
