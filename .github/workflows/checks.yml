@@ -7,10 +7,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 permissions:
+  actions: write
   pull-requests: write
   contents: write
   packages: write
-  workflows: write
 jobs:
   build_images:
     uses: ./.github/workflows/component-build-images.yml
