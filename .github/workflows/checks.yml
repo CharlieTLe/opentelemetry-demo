@@ -84,17 +84,11 @@ jobs:
       run: make install-tools
     - name: run checklicense
       run: make checklicense
-  dependabot-metadata:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'charlietle/opentelemetry-demo'
-    steps:
-    - name: Dependabot metadata
-      id: dependabot-metadata
-      uses: dependabot/fetch-metadata@v2
+
   dependabot-automerge:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'charlietle/opentelemetry-demo'
-    needs: [build_images, markdownlinkcheck, dependabot-metadata]
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    needs: [build_images, markdownlint, yamllint, misspell, markdownlinkcheck, sanity, checklicense]
     steps:
     - name: Enable auto-merge for Dependabot PRs
       run: gh pr merge --auto --merge "$PR_URL"
