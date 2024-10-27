@@ -7,18 +7,18 @@ FROM golang:1.22-alpine AS base-build
 WORKDIR /build
 RUN go env -w GOMODCACHE=/root/.cache/go-build
 
-RUN apk update \
-    && apk add --no-cache make protobuf-dev
+COPY ./src/checkoutservice/go.mod ./src/checkoutservice/go.sum ./
+RUN --mount=type=cache,target=/root/.cache/go-build go mod download
 
+COPY ./src/checkoutservice/tools.go ./
 RUN --mount=type=cache,target=/root/.cache/go-build \
-    --mount=type=bind,source=./src/checkoutservice/go.sum,target=go.sum \
-    --mount=type=bind,source=./src/checkoutservice/go.mod,target=go.mod \
-    --mount=type=bind,source=./src/checkoutservice/tools.go,target=tools.go \
     go list -e -f '{{range .Imports}}{{.}} {{end}}' tools.go | CGO_ENABLED=0 xargs go install -mod=readonly
 
+RUN apk add --no-cache protobuf-dev
+
+COPY ./src/checkoutservice ./
+COPY ./pb ./pb
 RUN --mount=type=cache,target=/root/.cache/go-build \
-    --mount=type=bind,rw,source=./src/checkoutservice,target=. \
-    --mount=type=bind,rw,source=./pb,target=./pb \
     protoc -I ./pb ./pb/demo.proto --go_out=./ --go-grpc_out=./ \
     && go build -ldflags "-s -w" -o /go/bin/checkoutservice/ ./
 
