@@ -88,13 +88,13 @@ jobs:
     - name: run checklicense
       run: make checklicense
 
-  dependabot-automerge:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
-    needs: [build_images, markdownlint, yamllint, misspell, markdownlinkcheck, sanity, checklicense]
-    steps:
-    - name: Enable auto-merge for Dependabot PRs
-      run: gh pr merge --auto --merge "$PR_URL"
-      env:
-        PR_URL: ${{github.event.pull_request.html_url}}
-        GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+#  dependabot-automerge:
+#    runs-on: ubuntu-latest
+#    if: github.event.pull_request.user.login == 'dependabot[bot]'
+#    needs: [build_images, markdownlint, yamllint, misspell, markdownlinkcheck, sanity, checklicense]
+#    steps:
+#    - name: Enable auto-merge for Dependabot PRs
+#      run: gh pr merge --auto --merge "$PR_URL"
+#      env:
+#        PR_URL: ${{github.event.pull_request.html_url}}
+#        GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
