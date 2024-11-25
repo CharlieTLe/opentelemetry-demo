@@ -1,0 +1,16 @@
+name: Clean Generation
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  protobufcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Generate
+        run: make clean docker-generate-protobuf
+      - name: Check Clean Work Tree
+        run: make check-clean-work-tree
