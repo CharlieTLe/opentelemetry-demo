@@ -26,10 +26,10 @@ jobs:
             git config --global user.email "torvalds@linux-foundation.org"
             git config --global user.name "Linus Torvalds"
             git add .
-            git commit -s -m "Update proto files"
+            git commit -s --amend
             git fetch origin $GITHUB_HEAD_REF
             git rebase origin/$GITHUB_HEAD_REF
-            git push origin HEAD:$GITHUB_HEAD_REF
+            git push origin HEAD:$GITHUB_HEAD_REF --force
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
