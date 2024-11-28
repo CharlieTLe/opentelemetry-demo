@@ -56,7 +56,8 @@ jobs:
             git config --global user.name "dependabot[bot]"
             git add .
             git commit -m "Update proto files"
-            git push
+            env
+            git push origin HEAD:$GITHUB_REF
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
