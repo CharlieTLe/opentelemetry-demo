@@ -18,6 +18,7 @@ updates:
       go-production-dependencies:
         exclude-patterns:
           - "google.golang.org/grpc/cmd/protoc-gen-go-grpc"
+          - "google.golang.org/grpc"
         dependency-type: "production"
     schedule:
       interval: "daily"
