@@ -52,11 +52,10 @@ jobs:
       - name: Commit only if there are changes
         run: |
           if ! git diff --quiet; then
-            git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
+            git config --global user.email "support@github.com"
             git config --global user.name "dependabot[bot]"
             git add .
-            git commit -m "Update proto files"
-            env
+            git commit -s -m "Update proto files"
             git fetch origin $GITHUB_HEAD_REF
             git rebase origin/$GITHUB_HEAD_REF
             git push origin HEAD:$GITHUB_HEAD_REF
