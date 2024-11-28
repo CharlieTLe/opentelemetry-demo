@@ -8,3 +8,9 @@ updates:
       interval: "daily"
     labels:
       - "infra"
+  - package-ecosystem: "pip"
+    directory: "/src/recommendationservice"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
