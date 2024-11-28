@@ -31,7 +31,7 @@ updates:
     directories:
       - "/src/recommendationservice"
     groups:
-      gradle-production-dependencies:
+      pip-production-dependencies:
         dependency-type: "production"
     schedule:
       interval: "daily"
