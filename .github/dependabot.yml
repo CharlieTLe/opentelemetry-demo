@@ -31,7 +31,6 @@ updates:
         exclude-patterns:
           - "com.google.protobuf:protoc"
           - "io.grpc:protoc-gen-grpc-java"
-          - "com.google.api.grpc:proto-google-common-protos"
         dependency-type: "production"
     schedule:
       interval: "daily"
