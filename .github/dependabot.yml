@@ -3,16 +3,23 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directories:
+      - "/"
+    groups:
+      actions-production-dependencies:
+        dependency-type: "production"
     schedule:
       interval: "daily"
-<<<<<<< Updated upstream
-    labels:
-      - "infra"
- - package-ecosystem: "gradle"
-=======
+  - package-ecosystem: "gomod"
+    directories:
+      - "/src/checkoutservice"
+      - "/src/productcatalogservice"
+    groups:
+      go-production-dependencies:
+        dependency-type: "production"
+    schedule:
+      interval: "daily"
   - package-ecosystem: "gradle"
->>>>>>> Stashed changes
     directories:
       - "/src/adservice"
     groups:
@@ -20,8 +27,6 @@ updates:
         dependency-type: "production"
     schedule:
       interval: "daily"
-<<<<<<< Updated upstream
-=======
   - package-ecosystem: "pip"
     directories:
       - "/src/recommendationservice"
@@ -30,5 +35,3 @@ updates:
         dependency-type: "production"
     schedule:
       interval: "daily"
-
->>>>>>> Stashed changes
