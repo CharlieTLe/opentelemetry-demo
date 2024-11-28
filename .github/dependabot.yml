@@ -6,9 +6,13 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+<<<<<<< Updated upstream
     labels:
       - "infra"
  - package-ecosystem: "gradle"
+=======
+  - package-ecosystem: "gradle"
+>>>>>>> Stashed changes
     directories:
       - "/src/adservice"
     groups:
@@ -16,3 +20,15 @@ updates:
         dependency-type: "production"
     schedule:
       interval: "daily"
+<<<<<<< Updated upstream
+=======
+  - package-ecosystem: "pip"
+    directories:
+      - "/src/recommendationservice"
+    groups:
+      gradle-production-dependencies:
+        dependency-type: "production"
+    schedule:
+      interval: "daily"
+
+>>>>>>> Stashed changes
