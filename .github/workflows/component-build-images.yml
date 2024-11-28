@@ -24,7 +24,11 @@ on:
         default: 'ghcr.io/open-telemetry/demo'
         required: false
         type: string
-
+permissions:
+  actions: write
+  pull-requests: write
+  contents: write
+  packages: write
 jobs:
   protobufcheck:
     runs-on: ubuntu-latest
@@ -35,6 +39,22 @@ jobs:
         run: make clean docker-generate-protobuf
       - name: Check Clean Work Tree
         run: make check-clean-work-tree
+
+  dependabot-protobufcheck:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Generate
+        run: make clean docker-generate-protobuf
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Update proto files"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build_and_push_images:
     runs-on: ubuntu-latest
