@@ -8,3 +8,11 @@ updates:
       interval: "daily"
     labels:
       - "infra"
+ - package-ecosystem: "gradle"
+    directories:
+      - "/src/adservice"
+    groups:
+      gradle-production-dependencies:
+        dependency-type: "production"
+    schedule:
+      interval: "daily"
