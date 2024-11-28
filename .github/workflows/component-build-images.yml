@@ -65,7 +65,7 @@ jobs:
 
   build_and_push_images:
     runs-on: ubuntu-latest
-    needs: protobufcheck
+    needs: [protobufcheck, dependabot-protobufcheck]
 
     permissions:
       contents: read
