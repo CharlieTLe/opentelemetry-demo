@@ -57,6 +57,7 @@ jobs:
             git add .
             git commit -m "Update proto files"
             env
+            git fetch origin $GITHUB_HEAD_REF
             git push origin HEAD:$GITHUB_HEAD_REF
           fi
         env:
