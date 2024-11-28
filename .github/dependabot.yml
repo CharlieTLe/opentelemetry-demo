@@ -4,13 +4,31 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    groups:
+      actions-production-dependencies:
+        dependency-type: "production"
     schedule:
       interval: "daily"
-    labels:
-      - "infra"
+  - package-ecosystem: "gomod"
+    directories:
+      - "/src/checkoutservice"
+      - "/src/productcatalogservice"
+    groups:
+      go-production-dependencies:
+        dependency-type: "production"
+    schedule:
+      interval: "daily"
  - package-ecosystem: "gradle"
     directories:
       - "/src/adservice"
+    groups:
+      gradle-production-dependencies:
+        dependency-type: "production"
+    schedule:
+      interval: "daily"
+ - package-ecosystem: "pip"
+    directories:
+      - "/src/recommendationservice"
     groups:
       gradle-production-dependencies:
         dependency-type: "production"
