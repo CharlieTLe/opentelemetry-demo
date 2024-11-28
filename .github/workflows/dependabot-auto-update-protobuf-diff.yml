@@ -1,0 +1,35 @@
+# Copyright The OpenTelemetry Authors
+# SPDX-License-Identifier: Apache-2.0
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+permissions:
+  actions: write
+  pull-requests: write
+  contents: write
+  packages: write
+jobs:
+  dependabot-auto-update-protobuf-diff:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Generate
+        run: make clean docker-generate-protobuf
+      - name: Commit only if there are changes
+        run: |
+          if ! git diff --quiet; then
+            git config --global user.email "torvalds@linux-foundation.org"
+            git config --global user.name "Linus Torvalds"
+            git add .
+            git commit -s -m "Update proto files"
+            git fetch origin $GITHUB_HEAD_REF
+            git rebase origin/$GITHUB_HEAD_REF
+            git push origin HEAD:$GITHUB_HEAD_REF
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

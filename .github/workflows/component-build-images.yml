@@ -32,7 +32,6 @@ permissions:
 jobs:
   protobufcheck:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login != 'dependabot[bot]'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,31 +40,9 @@ jobs:
       - name: Check Clean Work Tree
         run: make check-clean-work-tree
 
-  dependabot-protobufcheck:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Generate
-        run: make clean docker-generate-protobuf
-      - name: Commit only if there are changes
-        run: |
-          if ! git diff --quiet; then
-            git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
-            git config --global user.name "dependabot[bot]"
-            git add .
-            git commit -s -m "Update proto files"
-            git fetch origin $GITHUB_HEAD_REF
-            git rebase origin/$GITHUB_HEAD_REF
-            git push origin HEAD:$GITHUB_HEAD_REF
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   build_and_push_images:
     runs-on: ubuntu-latest
-    needs: dependabot-protobufcheck
+    needs: protobufcheck
 
     permissions:
       contents: read
