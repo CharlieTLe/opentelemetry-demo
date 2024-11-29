@@ -5,11 +5,9 @@ on:
   push:
     branches:
       - main
-      - dependabot/**
   pull_request:
     branches:
       - main
-      - dependabot/**
 
 permissions:
   actions: write
@@ -39,3 +37,5 @@ jobs:
             
             gh pr create --title "chore: update protobuf" --body "This PR updates the protobuf files" --base $GITHUB_HEAD_REF --head dependabot/protobuf
           fi
+        env:
+          GH_TOKEN: ${{ secrets.MY_TOKEN }}

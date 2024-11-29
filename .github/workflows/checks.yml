@@ -6,11 +6,9 @@ on:
   push:
     branches:
       - main
-      - dependabot/**
   pull_request:
     branches:
       - main
-      - dependabot/**
   workflow_dispatch:
 
 jobs:
