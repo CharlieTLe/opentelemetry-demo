@@ -34,11 +34,11 @@ jobs:
             git add .
             git commit -m "chore: update protobuf"
             # Create a new branch for the commit
-            git checkout -b $GITHUB_HEAD_REF/dependabot/protobuf
-            git push origin $GITHUB_HEAD_REF/dependabot/protobuf
+            git checkout -b dependabot/protobuf
+            git push origin dependabot/protobuf
             
             # Create a PR to the original branch
-            gh pr create --title "chore: update protobuf" --body "This PR updates the protobuf files" --base $GITHUB_HEAD_REF --head $GITHUB_HEAD_REF/dependabot/protobuf
+            gh pr create --title "chore: update protobuf" --body "This PR updates the protobuf files" --base $GITHUB_HEAD_REF --head dependabot/protobuf
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
