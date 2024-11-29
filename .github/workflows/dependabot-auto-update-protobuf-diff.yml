@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - dependabot/** # Allow Dependabot PRs to trigger the workflow
   pull_request:
     branches:
       - main
