@@ -18,17 +18,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Git
+        run: |
+          git config --global user.email "dependabot[bot]@users.noreply.github.com"
+          git config --global user.name "dependabot[bot]"
+          
+          git fetch origin $GITHUB_HEAD_REF
+          git rebase origin/$GITHUB_HEAD_REF
+
       - name: Generate
         run: make clean docker-generate-protobuf
       - name: Commit only if there are changes
         run: |
           if ! git diff --quiet; then
-            git fetch origin $GITHUB_HEAD_REF
-            git rebase origin/$GITHUB_HEAD_REF
-          
-            git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
-            git config --global user.name "dependabot[bot]"
-          
             git add .
             git commit --amend --no-edit
             git push origin HEAD:$GITHUB_HEAD_REF --force
