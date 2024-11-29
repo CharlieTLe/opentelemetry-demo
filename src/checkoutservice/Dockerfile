@@ -10,7 +10,7 @@ COPY ./src/checkoutservice ./
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
     --mount=type=cache,target=/root/.cache/go-build \
-    go mod tidy \
+    go mod tidy
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
     --mount=type=cache,target=/root/.cache/go-build \
