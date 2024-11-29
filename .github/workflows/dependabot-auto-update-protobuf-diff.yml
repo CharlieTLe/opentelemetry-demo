@@ -28,10 +28,10 @@ jobs:
       - name: Commit only if there are changes
         run: |
           if ! git diff --quiet; then
-            git config user.name "dependabot[bot]"
-            git config user.email "49699333+dependabot[bot]@users.noreply.github.com"
+            git config user.name "charlietle"
+            git config user.email "charlie_le@apple.com"
             git add .
-            git commit -m "[dependabot skip] chore: update protobuf"
+            git commit -m "chore: update protobuf"
             git push
           fi
         env:
