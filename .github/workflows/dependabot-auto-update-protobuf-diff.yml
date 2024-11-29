@@ -33,7 +33,7 @@ jobs:
             git add .
             git commit -m "[dependabot skip] chore: update protobuf"
             git checkout -b dependabot/protobuf
-            git push origin dependabot/protobuf
+            git push origin dependabot/protobuf --force
             
             gh pr create --title "chore: update protobuf" --body "This PR updates the protobuf files" --base $GITHUB_HEAD_REF --head dependabot/protobuf
           fi
