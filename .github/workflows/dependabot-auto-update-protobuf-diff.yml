@@ -1,0 +1,34 @@
+# Copyright The OpenTelemetry Authors
+# SPDX-License-Identifier: Apache-2.0
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+permissions:
+  actions: write
+  pull-requests: write
+  contents: write
+  packages: write
+jobs:
+  dependabot-auto-update-protobuf-diff:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Generate
+        run: make clean docker-generate-protobuf
+      - name: Commit only if there are changes
+        run: |
+          if ! git diff --quiet; then
+            git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
+            git config --global user.name "dependabot[bot]"
+            git add .
+            git commit -s --amend --no-edit
+            git fetch origin $GITHUB_HEAD_REF
+            git push origin HEAD:$GITHUB_HEAD_REF --force
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
