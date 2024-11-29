@@ -23,11 +23,14 @@ jobs:
       - name: Commit only if there are changes
         run: |
           if ! git diff --quiet; then
+            git fetch origin $GITHUB_HEAD_REF
+            git rebase origin/$GITHUB_HEAD_REF
+          
             git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
             git config --global user.name "dependabot[bot]"
+          
             git add .
-            git commit -s --amend --no-edit
-            git fetch origin $GITHUB_HEAD_REF
+            git commit --amend --no-edit
             git push origin HEAD:$GITHUB_HEAD_REF --force
           fi
         env:
