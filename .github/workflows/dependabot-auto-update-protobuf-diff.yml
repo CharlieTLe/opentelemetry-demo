@@ -18,27 +18,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Git
-        run: |
-          git config --global user.email "dependabot[bot]@users.noreply.github.com"
-          git config --global user.name "dependabot[bot]"
-          
-          git fetch origin $GITHUB_HEAD_REF
-          git rebase origin/$GITHUB_HEAD_REF
-
+        with:
+          ref: ${{ github.head_ref }}
       - name: Generate
         run: make clean docker-generate-protobuf
       - name: Commit only if there are changes
         run: |
           if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add .
             git commit -m "chore: update protobuf"
-            # Create a new branch for the commit
-            git checkout -b dependabot/protobuf
-            git push origin dependabot/protobuf
-            
-            # Create a PR to the original branch
-            gh pr create --title "chore: update protobuf" --body "This PR updates the protobuf files" --base $GITHUB_HEAD_REF --head dependabot/protobuf
+            git push
+#             Create a new branch for the commit
+#            git checkout -b dependabot/protobuf
+#            git push origin dependabot/protobuf
+#
+#            # Create a PR to the original branch
+#            gh pr create --title "chore: update protobuf" --body "This PR updates the protobuf files" --base $GITHUB_HEAD_REF --head dependabot/protobuf
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
