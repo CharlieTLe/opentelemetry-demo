@@ -36,4 +36,4 @@ jobs:
             git push
           fi
         env:
-          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
