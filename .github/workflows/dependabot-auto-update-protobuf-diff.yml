@@ -26,7 +26,7 @@ jobs:
             git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
             git config --global user.name "dependabot[bot]"
             git add .
-            git commit -s --amend
+            git commit -s --amend --no-edit
             git fetch origin $GITHUB_HEAD_REF
             git rebase origin/$GITHUB_HEAD_REF
             git push origin HEAD:$GITHUB_HEAD_REF --force
