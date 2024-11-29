@@ -10,6 +10,17 @@ updates:
         dependency-type: "production"
     schedule:
       interval: "daily"
+  - package-ecosystem: "docker"
+    directories:
+      - "/src/checkoutservice"
+      - "/src/checkoutservice/genproto"
+      - "/src/productcatalogservice"
+      - "/src/productcatalogservice/genproto"
+    groups:
+      docker-production-dependencies:
+        dependency-type: "production"
+    schedule:
+      interval: "daily"
   - package-ecosystem: "gomod"
     directories:
       - "/src/checkoutservice"
