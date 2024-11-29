@@ -16,10 +16,6 @@ updates:
       - "/src/productcatalogservice"
     groups:
       go-production-dependencies:
-#        exclude-patterns:
-#          - "google.golang.org/grpc/cmd/protoc-gen-go-grpc"
-#          - "google.golang.org/grpc"
-#          - "google.golang.org/protobuf"
         dependency-type: "production"
     schedule:
       interval: "daily"
@@ -28,9 +24,6 @@ updates:
       - "/src/adservice"
     groups:
       gradle-production-dependencies:
-#        exclude-patterns:
-#          - "com.google.protobuf:protoc"
-#          - "io.grpc:protoc-gen-grpc-java"
         dependency-type: "production"
     schedule:
       interval: "daily"

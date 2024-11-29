@@ -5,12 +5,12 @@ name: Checks
 on:
   push:
     branches:
-      - main
-      - 'dependabot/**'
+    - main
+    - 'dependabot/**'
   pull_request:
     branches:
-      - main
-      - 'dependabot/**'
+    - main
+    - 'dependabot/**'
   workflow_dispatch:
 
 jobs:
