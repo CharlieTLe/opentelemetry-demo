@@ -28,7 +28,6 @@ jobs:
             git add .
             git commit -s --amend --no-edit
             git fetch origin $GITHUB_HEAD_REF
-            git rebase origin/$GITHUB_HEAD_REF
             git push origin HEAD:$GITHUB_HEAD_REF --force
           fi
         env:
