@@ -37,8 +37,7 @@ updates:
       interval: "daily"
   - package-ecosystem: "pip"
     directories:
-      - "/src/recommendationservice"
-      - "/src/recommendationservice/genproto"
+      - "/src/**/*"
     groups:
       pip-production-dependencies:
         dependency-type: "production"
