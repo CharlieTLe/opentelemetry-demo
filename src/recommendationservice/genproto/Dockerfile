@@ -5,4 +5,6 @@ FROM python:3.12-slim-bookworm
 
 WORKDIR /build
 
-RUN python -m pip install grpcio-tools==1.59.2
+COPY ./src/recommendationservice/genproto/requirements.txt .
+
+RUN python -m pip install -r requirements.txt

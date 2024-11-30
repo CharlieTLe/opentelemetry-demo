@@ -38,6 +38,7 @@ updates:
   - package-ecosystem: "pip"
     directories:
       - "/src/recommendationservice"
+      - "/src/recommendationservice/genproto"
     groups:
       pip-production-dependencies:
         dependency-type: "production"
