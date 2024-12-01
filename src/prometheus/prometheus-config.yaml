@@ -12,3 +12,7 @@ scrape_configs:
   static_configs:
   - targets:
     - 'otelcol:8888'
+- job_name: prometheus
+  static_configs:
+  - targets:
+    - 'localhost:9090'
