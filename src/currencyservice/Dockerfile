@@ -35,7 +35,9 @@ COPY ./pb/demo.proto /currencyservice/proto/demo.proto
 
 RUN cd /currencyservice \
     && mkdir -p build && cd build \
-    && cmake .. \
+    && cmake .. -DCMAKE_CXX_STANDARD=17 -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+                                         -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF \
+                                         -DWITH_EXAMPLES=OFF -DWITH_OTLP_GRPC=ON -DWITH_ABSEIL=ON \
     && make -j$(nproc || sysctl -n hw.ncpu || echo 1) install
 
 
