@@ -75,14 +75,6 @@ updates:
         dependency-type: "production"
     schedule:
       interval: "daily"
-  - package-ecosystem: "composer"
-    directories:
-      - "/src/**/*"
-    groups:
-      composer-production-dependencies:
-        dependency-type: "production"
-    schedule:
-      interval: "daily"
   - package-ecosystem: "devcontainers"
     directories:
       - "/"
