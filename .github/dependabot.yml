@@ -51,14 +51,6 @@ updates:
         dependency-type: "production"
     schedule:
       interval: "daily"
-  - package-ecosystem: "dotnet-sdk"
-    directories:
-      - "/src/**/*"
-    groups:
-      dotnet-sdk-production-dependencies:
-        dependency-type: "production"
-    schedule:
-      interval: "daily"
   - package-ecosystem: "cargo"
     directories:
       - "/src/**/*"
@@ -72,30 +64,6 @@ updates:
       - "/src/**/*"
     groups:
       composer-production-dependencies:
-        dependency-type: "production"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "devcontainers"
-    directories:
-      - "/"
-    groups:
-      devcontainers-production-dependencies:
-        dependency-type: "production"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "mix"
-    directories:
-      - "/src/**/*"
-    groups:
-      mix-production-dependencies:
-        dependency-type: "production"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "elm"
-    directories:
-      - "/src/**/*"
-    groups:
-      elm-production-dependencies:
         dependency-type: "production"
     schedule:
       interval: "daily"
