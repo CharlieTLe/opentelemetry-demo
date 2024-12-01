@@ -105,5 +105,7 @@ updates:
     groups:
       npm-production-dependencies:
         dependency-type: "production"
+      npm-development-dependencies:
+        dependency-type: "development"
     schedule:
       interval: "daily"
