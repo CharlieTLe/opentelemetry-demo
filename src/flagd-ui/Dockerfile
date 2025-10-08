@@ -1,7 +1,7 @@
 # Copyright The OpenTelemetry Authors
 # SPDX-License-Identifier: Apache-2.0
 
-FROM node:23 AS builder
+FROM node:24 AS builder
 
 WORKDIR /app
 
@@ -15,7 +15,7 @@ RUN npm run build
 
 # -----------------------------------------------------------------------------
 
-FROM node:23-alpine
+FROM node:24-alpine
 
 WORKDIR /app
 
